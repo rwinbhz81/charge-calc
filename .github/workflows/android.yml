@@ -24,8 +24,11 @@ jobs:
 
       - name: Build APK
         run: |
-          yes | sdkmanager --licenses || true
-          buildozer -v android debug
+         export ANDROID_SDK_ROOT=$HOME/.buildozer/android/platform/android-sdk
+         yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
+         yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "build-tools;36.0.0" || true
+         buildozer -v android debug
+
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
