@@ -14,21 +14,18 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y python3 python3-pip python3-venv \
-            build-essential git zip unzip openjdk-17-jdk \
-            libffi-dev libssl-dev
+          build-essential git zip unzip openjdk-17-jdk \
+          libffi-dev libssl-dev
 
       - name: Install buildozer
         run: |
           pip3 install --upgrade pip
           pip3 install buildozer cython
-         
-          
+
       - name: Build APK
         run: |
+          buildozer android clean
           buildozer -v android debug
-
-
-
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
