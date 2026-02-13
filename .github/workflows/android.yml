@@ -32,7 +32,7 @@ jobs:
 
           buildozer android clean
           buildozer -v android debug
-g
+
 
 
       - name: Upload APK
