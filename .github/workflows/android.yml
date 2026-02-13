@@ -24,6 +24,7 @@ jobs:
 
       - name: Build APK
         run: |
+          yes | sdkmanager --licenses || true
           buildozer -v android debug
 
       - name: Upload APK
